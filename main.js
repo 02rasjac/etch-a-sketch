@@ -17,13 +17,20 @@ function generateGrid(gridSize = 16) {
     let div = document.createElement('div');
     div.style.width = `${divSize}px`;
     div.style.height = `${divSize}px`;
+    div.style.backgroundColor = 'rgba(0, 0, 0, 0)';
     div.addEventListener('mouseover', color);
     etch.appendChild(div);
   }
 }
 
 function color(e) {
-  e.target.classList.add('colored');
+  let bgSplit = e.target.style.backgroundColor.split(',');
+  let alpha = parseFloat(bgSplit[bgSplit.length - 1]);
+  if (alpha < 0.99) {
+    alpha += 0.09;
+  }
+
+  e.target.style.backgroundColor = `rgba(0, 0, 0, ${alpha})`;
 }
 
 generateGrid();
