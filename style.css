@@ -25,6 +25,6 @@ body {
   height: var(--pixel-size);
 }
 
-.pixel:hover {
+.colored {
   background-color: gray;
 }
